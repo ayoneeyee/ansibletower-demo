@@ -49,24 +49,6 @@
 				"description": "Administrator username on all VMs"
 			}
 		},
-		"xipioDomain": {
-			"type": "string",
-			"metadata": {
-				"description": "Xip.io Subdomain for application routing"
-			}
-		},
-		"customDomain": {
-			"type": "string",
-			"metadata": {
-				"description": "custom Subdomain for application routing"
-			}
-		},
-		"subDomainChosen": {
-			"type": "string",
-			"metadata": {
-				"description": "Subdomain chosen for application routing"
-			}
-		},
 		"sshPrivateKey": {
 			"type": "securestring",
 			"minLength": 1,

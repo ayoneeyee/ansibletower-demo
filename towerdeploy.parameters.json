@@ -49,12 +49,6 @@
 		},
 		"keyVaultSecret": {
 			"value": "changeme"
-		},
-		"defaultSubDomainType": {
-			"value": "xipio"
-		},
-		"defaultSubDomain": {
-			"value": "changeme"
 		}
 	}
 }
