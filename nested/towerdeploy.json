@@ -1,0 +1,135 @@
+﻿{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"_artifactsLocation": {
+			"type": "string",
+			"metadata": {
+				"description": "Base URL for script location"
+			}
+		},
+		"apiVersionCompute": {
+			"type": "string",
+			"metadata": {
+				"description": "API version for compute resources"
+			}
+		},
+		"towerMasterHostname": {
+			"type": "string",
+			"minLength": 1,
+			"metadata": {
+				"description": "Tower Master hostname"
+			}
+		},
+		"towerMasterPublicIpFqdn": {
+			"type": "string",
+			"minLength": 1,
+			"metadata": {
+				"description": "Tower Master VM public IP fully qualified domain name"
+			}
+		},
+		"towerMasterPublicIpAddress": {
+			"type": "string",
+			"minLength": 1,
+			"metadata": {
+				"description": "Tower Master VM public IP address"
+			}
+		},
+		"towerInfraHostname": {
+			"type": "string",
+			"minLength": 1,
+			"metadata": {
+				"description": "Tower Infra Node hostname"
+			}
+		},
+		"towerNodeHostname": {
+			"type": "string",
+			"minLength": 1,
+			"metadata": {
+				"description": "Tower Node hostname"
+			}
+		},
+		"masterInstanceCount": {
+			"type": "int",
+			"minValue": 1,
+			"metadata": {
+				"description": "Number of Tower nodes"
+			}
+		},
+		"nodeInstanceCount": {
+			"type": "int",
+			"minValue": 1,
+			"metadata": {
+				"description": "Number of Tower nodes"
+			}
+		},
+		"adminUsername": {
+			"type": "string",
+			"minLength": 1,
+			"metadata": {
+				"description": "Administrator username on all VMs"
+			}
+		},
+		"towerPassword": {
+			"type": "securestring",
+			"minLength": 1,
+			"metadata": {
+				"description": "Administrator password for Tower Console"
+			}
+		},
+		"xipioDomain": {
+			"type": "string",
+			"metadata": {
+				"description": "Xip.io Subdomain for application routing"
+			}
+		},
+		"customDomain": {
+			"type": "string",
+			"metadata": {
+				"description": "custom Subdomain for application routing"
+			}
+		},
+		"subDomainChosen": {
+			"type": "string",
+			"metadata": {
+				"description": "Subdomain chosen for application routing"
+			}
+		},
+		"sshPrivateKey": {
+			"type": "securestring",
+			"minLength": 1,
+			"metadata": {
+				"description": "SSH private key for deploying Tower"
+			}
+		}
+	},
+	"variables": {
+		"singlequote": "'",
+		"towerDeploymentScriptUrl": "[concat(parameters('_artifactsLocation'), 'scripts/deployTower.sh')]",
+		"towerDeploymentScriptFileName": "deployTower.sh"
+	},
+	"resources": [{
+		"type": "Microsoft.Compute/virtualMachines/extensions",
+		"name": "[concat(parameters('towerMasterHostname'), '-0', '/deployTower')]",
+		"location": "[resourceGroup().location]",
+		"apiVersion": "[parameters('apiVersionCompute')]",
+		"tags": {
+			"displayName": "DeployTower"
+		},
+		"properties": {
+			"publisher": "Microsoft.Azure.Extensions",
+			"type": "CustomScript",
+			"typeHandlerVersion": "2.0",
+			"autoUpgradeMinorVersion": true,
+			"settings": {
+				"fileUris": [
+					"[variables('towerDeploymentScriptUrl')]"
+				]
+			},
+			"protectedSettings": {
+				"commandToExecute": "[concat('bash ', variables('towerDeploymentScriptFileName'), ' \"', parameters('adminUsername'), '\" ', variables('singlequote'), parameters('towerPassword'), variables('singlequote'), ' \"', parameters('sshPrivateKey'), '\" \"', parameters('towerMasterHostname'), '\" \"', parameters('towerMasterPublicIpFqdn'), '\" \"', parameters('towerMasterPublicIpAddress'), '\" \"', parameters('towerInfraHostname'), '\" \"', parameters('towerNodeHostname'), '\" \"', parameters('nodeInstanceCount'), '\" \"', parameters('MasterInstanceCount'), '\" \"', parameters(parameters('subDomainChosen')), '\"')]"
+			}
+		}
+	}],
+	"outputs": {}
+}
