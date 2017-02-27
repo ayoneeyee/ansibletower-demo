@@ -687,15 +687,6 @@
 					"adminUsername": {
 						"value": "[parameters('adminUsername')]"
 					},
-					"towerPassword": {
-						"value": "[parameters('towerPassword')]"
-					},
-					"customDomain": {
-						"value": "[parameters('defaultSubDomain')]"
-					},
-					"subDomainChosen": {
-						"value": "[concat(parameters('defaultSubDomainType'), 'Domain')]"
-					},
 					"sshPrivateKey": {
 						"reference": {
 							"keyvault": {
