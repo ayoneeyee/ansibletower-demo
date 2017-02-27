@@ -35,28 +35,7 @@
 				"description": "Tower Master VM public IP address"
 			}
 		},
-		"towerInfraHostname": {
-			"type": "string",
-			"minLength": 1,
-			"metadata": {
-				"description": "Tower Infra Node hostname"
-			}
-		},
-		"towerNodeHostname": {
-			"type": "string",
-			"minLength": 1,
-			"metadata": {
-				"description": "Tower Node hostname"
-			}
-		},
 		"masterInstanceCount": {
-			"type": "int",
-			"minValue": 1,
-			"metadata": {
-				"description": "Number of Tower nodes"
-			}
-		},
-		"nodeInstanceCount": {
 			"type": "int",
 			"minValue": 1,
 			"metadata": {
@@ -68,13 +47,6 @@
 			"minLength": 1,
 			"metadata": {
 				"description": "Administrator username on all VMs"
-			}
-		},
-		"towerPassword": {
-			"type": "securestring",
-			"minLength": 1,
-			"metadata": {
-				"description": "Administrator password for Tower Console"
 			}
 		},
 		"xipioDomain": {
