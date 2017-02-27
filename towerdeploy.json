@@ -533,8 +533,7 @@
 			"dependsOn": [
 				"[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
 				"[concat('Microsoft.Network/loadBalancers/', variables('masterLoadBalancerName'))]",
-				"[concat(variables('masterLbId'), '/inboundNatRules/SSH-', variables('towerMasterHostname') ,copyIndex())]",
-				"[concat('Microsoft.Network/networkSecurityGroups/', variables('towerNodeHostname'), '-nsg')]"
+				"[concat(variables('masterLbId'), '/inboundNatRules/SSH-', variables('towerMasterHostname') ,copyIndex())]"
 			],
 			"copy": {
 				"name": "masterNicLoop",

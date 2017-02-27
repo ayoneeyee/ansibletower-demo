@@ -81,7 +81,7 @@
 				]
 			},
 			"protectedSettings": {
-				"commandToExecute": "[concat('bash ', variables('towerDeploymentScriptFileName'), ' \"', parameters('adminUsername'), '\" ', variables('singlequote'), parameters('towerPassword'), variables('singlequote'), ' \"', parameters('sshPrivateKey'), '\" \"', parameters('towerMasterHostname'), '\" \"', parameters('towerMasterPublicIpFqdn'), '\" \"', parameters('towerMasterPublicIpAddress'), '\" \"', parameters('towerInfraHostname'), '\" \"', parameters('towerNodeHostname'), '\" \"', parameters('nodeInstanceCount'), '\" \"', parameters('MasterInstanceCount'), '\" \"', parameters(parameters('subDomainChosen')), '\"')]"
+				"commandToExecute": "[concat('bash ', variables('towerDeploymentScriptFileName'), ' \"', parameters('adminUsername'), '\" ', variables('singlequote'), parameters('towerPassword'), variables('singlequote'), ' \"', parameters('sshPrivateKey'), '\" \"', parameters('towerMasterHostname'), '\" \"', parameters('towerMasterPublicIpFqdn'), '\" \"', parameters('towerMasterPublicIpAddress'), '\" \"', parameters('MasterInstanceCount'), '\"')]"
 			}
 		}
 	}],
