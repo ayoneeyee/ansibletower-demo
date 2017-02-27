@@ -1,0 +1,60 @@
+﻿{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"_artifactsLocation": {
+			"value": "https://raw.githubusercontent.com/haroldwongms/tower-containerplatform/master/"
+		},
+		"masterVmSize": {
+			"value": "Standard_DS2_v2"
+		},
+		"nodeVmSize": {
+			"value": "Standard_DS2_v2"
+		},
+		"towerClusterPrefix": {
+			"value": "changeme"
+		},
+		"towerMasterPublicIpDnsLabel": {
+			"value": "GEN-UNIQUE"
+		},
+		"masterInstanceCount": {
+			"value": 1
+		},
+		"dataDiskSize": {
+			"value": 10
+		},
+		"adminUsername": {
+			"value": "changeme"
+		},
+		"towerPassword": {
+			"value": "changeme"
+		},
+		"cloudAccessUsername": {
+			"value": "changeme"
+		},
+		"cloudAccessPassword": {
+			"value": "changeme"
+		},
+		"cloudAccessPoolId": {
+			"value": "changeme"
+		},
+		"sshPublicKey": {
+			"value": "GEN-SSH-PUB-KEY"
+		},
+		"keyVaultResourceGroup": {
+			"value": "changeme"
+		},
+		"keyVaultName": {
+			"value": "changeme"
+		},
+		"keyVaultSecret": {
+			"value": "changeme"
+		},
+		"defaultSubDomainType": {
+			"value": "xipio"
+		},
+		"defaultSubDomain": {
+			"value": "changeme"
+		}
+	}
+}
