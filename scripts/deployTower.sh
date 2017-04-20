@@ -8,6 +8,11 @@ wget https://raw.githubusercontent.com/mglantz/ansibletower-demo/master/scripts/
 cp inventory inventory.org
 mv inventory.new inventory
 sh ./setup.sh
+wget https://github.com/mglantz/ansibletower-demo/raw/master/scripts/tower-backup-latest.tar.gz
+sh ./setup -r tower-backup-latest.tar.gz
+
+echo "New password:"
+sudo tower-manage changepassword admin
 
 
 
